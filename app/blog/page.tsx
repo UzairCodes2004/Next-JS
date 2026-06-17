@@ -1,10 +1,12 @@
 
 import React from 'react'
+import Posts from './posts'
 
 const BlogPage = () => {
   return (
-    <div className='w-sm m-2.5 border-2 '>
-This is blog page
+    <div > 
+        Welcome to Blog Posts
+    <Posts/>
     </div>
   )
 }
