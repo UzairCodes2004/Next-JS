@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link"
 import ProductCard from "./components/ProductCard";
 import AddToCart from "./components/AddToCart";
+import HomePage from "./home/page";
+import ButtonReference from "./blog/Button";
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -9,9 +11,13 @@ export default function Home() {
        <div>
        <h1>Hello World</h1>
        <Link href="/users">Users</Link>
+       <Link href ="/">
        
+       </Link>
       <ProductCard />
-     
+      <Link href="/home">Home</Link>
+      <Link href="/blog">Blog</Link>
+      
        </div>
       </main>
     </div>
