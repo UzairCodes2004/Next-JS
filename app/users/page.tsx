@@ -1,23 +1,62 @@
-import React from 'react'
-interface User{
-    id:number;
-    name:string
-    email:string
-}
-const UsersPage = async () => {
-    // by using cache : 'no-store we make the /users route dynamic and it will render on demand '
-    // by using next : {revalidate :10} the static server side rendering would happend after 10 sec fresh data will be fetched and we can see it through time local stamp
-    const res = await fetch('https://jsonplaceholder.typicode.com/users',{cache:'no-store'  })
-    const users: User[] = await res.json()
-  return (
-    <>
-    <h1>Users and There emails</h1>
-    <p>{new Date().toLocaleTimeString()}</p>
-    <ul>
-        {users.map(user => <li key={user.id}> Name :  {user.name} <br></br>Email : {user.email}</li>)}
-    </ul>
-    </>
-  )
+import Link from 'next/link';
+import React from 'react';
+import { sort } from 'fast-sort';
+
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
 }
 
-export default UsersPage
+
+interface Props {
+  searchParams: Promise<{ sortOrder?: string }>;
+}
+
+const UsersPage = async ({ searchParams }: Props) => {
+  
+  const res = await fetch('https://jsonplaceholder.typicode.com/users', {
+    cache: 'no-store',
+  });
+  const users: User[] = await res.json();
+
+  const { sortOrder } = await searchParams;
+
+
+  let sortedUsers = users;
+  if (sortOrder === 'name') {
+    sortedUsers = sort(users).asc((u) => u.name);
+  } else if (sortOrder === 'email') {
+    sortedUsers = sort(users).asc((u) => u.email);
+  }
+
+  return (
+    <>
+      <h1>Users and Their Emails</h1>
+      <p>{new Date().toLocaleTimeString()}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <Link href="/users?sortOrder=name">Name</Link>
+            </th>
+            <th>
+              <Link href="/users?sortOrder=email">Email</Link>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedUsers.map((user) => (
+            <tr key={user.id}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+export default UsersPage;
