@@ -14,7 +14,7 @@ const UsersPage = async () => {
     <h1>Users and There emails</h1>
     <p>{new Date().toLocaleTimeString()}</p>
     <ul>
-        {users.map(user => <li key={user.id}> Name : {user.name} <br></br>Email : {user.email}</li>)}
+        {users.map(user => <li key={user.id}> Name :  {user.name} <br></br>Email : {user.email}</li>)}
     </ul>
     </>
   )

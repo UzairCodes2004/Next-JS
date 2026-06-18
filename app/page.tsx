@@ -12,11 +12,16 @@ export default function Home() {
         
        {/* Nav & Routers  
        <h1>Hello World</h1>
-       <Link href="/users">Users</Link>
-       <ProductCard />
+      <ProductCard />
        <Link href="/home">Home</Link>
        <Link href="/blog">Blog</Link> */}
-       <Link href="blog">Blog </Link>
+
+       {/* Post fetching and like button
+        <Link href="blog">Blog </Link> */}
+
+        <Link href="/users">Users</Link>
+
+       {/* <Link href="/products">Products</Link> */}
        </div>
       </main>
     </div>
