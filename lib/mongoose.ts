@@ -38,6 +38,8 @@ async function dbConnect(): Promise<typeof mongoose> {
     cache.promise = mongoose
       .connect(MONGO_URI, {
         bufferCommands: false,
+        family:4,
+        serverSelectionTimeoutMS: 5000
       })
       .then((m) => m);
   }
