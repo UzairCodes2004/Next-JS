@@ -10,8 +10,8 @@ const NavBar = () => {
       <Link href="/home">Home</Link>
       <Link href="/users">Users</Link>
       <Link href="/blog">Blogs</Link>
-      {status === 'authenticated' && <div>{session?.user?.name}</div>}
-      {status === 'unauthenticated' && <Link href="/login">Login</Link>}
+      {/* {status === 'authenticated' && <div>{session?.user?.name}</div>}
+      {status === 'unauthenticated' && <Link href="/login">Login</Link>} */}
     </div>
   )
 }
