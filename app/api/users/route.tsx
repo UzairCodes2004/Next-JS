@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { nanoid, safeParse } from "zod";
 import schema from "./schema";
+
 interface User {
   id: Number;
   name: String;
@@ -21,9 +22,9 @@ export const userArr: User[] = [
   },
 ];
 
-export function GET() {
-  // if we remove req parameter next js will cache the result of this response
-  return NextResponse.json(userArr);
+export async function  
+GET() {
+ return NextResponse.json(userArr)
 }
 
 export async function POST(request: NextRequest) {
